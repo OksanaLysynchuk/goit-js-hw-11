@@ -2,10 +2,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 export function renderGallery(images) {
-  const galleryContainer = document.querySelector('.gallery');
-  galleryContainer.innerHTML = '';
-
-  images.forEach(image => {
+  const imageElements = images.map(image => {
     const card = document.createElement('div');
     card.classList.add('card');
 
@@ -19,7 +16,14 @@ export function renderGallery(images) {
 
     imgLink.appendChild(img);
     card.appendChild(imgLink);
-    galleryContainer.appendChild(card);
+
+    return card;
+  });
+
+  galleryContainer.innerHTML = '';
+
+  imageElements.forEach(imageElement => {
+    galleryContainer.appendChild(imageElement);
   });
 
   const lightbox = new SimpleLightbox('.gallery a', {
