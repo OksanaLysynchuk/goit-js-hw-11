@@ -19,6 +19,7 @@ export function renderGallery(images) {
 
     return card;
   });
+  const galleryContainer = document.querySelector('.gallery');
 
   galleryContainer.innerHTML = '';
 
