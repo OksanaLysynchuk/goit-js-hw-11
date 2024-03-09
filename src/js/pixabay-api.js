@@ -12,7 +12,7 @@ export function fetchImages(query) {
       return response.json();
     })
     .catch(error => {
-      console.error('Error while fetching images from pixabay!', error);
+      console.log('Error while fetching images from pixabay!', error);
       throw error;
     });
 }
