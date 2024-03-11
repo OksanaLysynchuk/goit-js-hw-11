@@ -4,7 +4,10 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 export function renderGallery(images) {
-  const galleryElements = [];
+  const galleryContainer = document.querySelector('.gallery');
+  galleryContainer.innerHTML = '';
+
+  const fragment = document.createDocumentFragment();
 
   images.forEach(image => {
     const card = document.createElement('div');
@@ -21,15 +24,10 @@ export function renderGallery(images) {
     imgLink.appendChild(img);
     card.appendChild(imgLink);
 
-    galleryElements.push(card);
+    fragment.appendChild(card);
   });
-  const galleryContainer = document.querySelector('.gallery');
 
-  galleryContainer.innerHTML = '';
-
-  galleryElementsElements.forEach(imageElement => {
-    galleryContainer.appendChild(imageElement);
-  });
+  galleryContainer.appendChild(fragment);
 
   const lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
